@@ -1,4 +1,4 @@
-# The site is live at:
+# The Site Is Live At:
 
 https://momerullah.github.io/Web-Applications-HW2/
 
