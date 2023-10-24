@@ -1,34 +1,60 @@
-export default function CreateTodo() {
-    return (
-        <form onSubmit={e => e.preventDefault()}>
-            Author: <b><span id="author-display"></span></b>
-            <div>
-                <label htmlFor="create-title">Title:</label>
-                <input type="text" name="create-title" id="create-title" required />
-            </div>
-            <div>
-                <label htmlFor="create-description">Description:</label>
-                <textarea name="create-description" id="create-description"></textarea>
-            </div>
-            <input type="submit" value="Add Todo" onClick={() => {
-                const title = document.getElementById("create-title").value;
-                if (!title.trim()) return; // Ensure title is provided and is not just whitespace
-                const description = document.getElementById("create-description").value;
-                const author = document.getElementById("author-display").innerText;
-                const dateCreated = Date.now();
-                const complete = false;
+import React, { useState, useContext } from 'react';
+import { TodoContext } from './context/TodoContext';
+import { UserContext } from './context/UserContext';
 
-                const todoList = document.getElementById("todo-list");
-                const todoItem = document.createElement("div");
-                todoItem.innerHTML = `
-                    <h3>${title}</h3>
-                    <div>${description}</div>
-                    <div>Author: ${author}</div>
-                    <div>Date Created: ${new Date(dateCreated).toLocaleString()}</div>
-                    <input type="checkbox" onchange="updateCompletionStatus(this)" />
-                `;
-                todoList.appendChild(todoItem);
-            }} />
+export default function CreateTodo() {
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const { dispatch: todoDispatch } = useContext(TodoContext);
+    const { state: userState } = useContext(UserContext);
+
+    const handleSubmit = () => {
+        if (title.trim() && description.trim()) {
+            todoDispatch({
+                type: 'CREATE_TODO',
+                payload: {
+                    title: title,
+                    description: description,
+                    author: userState.user,
+                }
+            });
+            setTitle('');
+            setDescription('');
+        }
+    };
+
+    return (
+        <form onSubmit={e => {
+            e.preventDefault();
+            handleSubmit();
+        }}>
+            <label htmlFor="author">Author:</label>
+            <input 
+                type="text"
+                name="author"
+                id="author"
+                value={userState.user}
+                readOnly
+            />
+            <br />
+            <label htmlFor="title">Title:</label>
+            <input 
+                type="text"
+                name="title"
+                id="title"
+                value={title}
+                onChange={e => setTitle(e.target.value)}
+            />
+            <br />
+            <label htmlFor="description">Description:</label>
+            <textarea 
+                name="description"
+                id="description"
+                value={description}
+                onChange={e => setDescription(e.target.value)}
+            />
+            <br />
+            <input type="submit" value="Add Todo" />
         </form>
-    )
+    );
 }
