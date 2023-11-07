@@ -1,0 +1,51 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "portal",
+      "content": "Some content",
+      "author": "paul"
+    },
+    {
+      "title": "My new Post",
+      "content": "Some content",
+      "author": "Omer",
+      "id": 2
+    }
+  ],
+  "users": [
+    {
+      "email": "omarullahk@gmail.com",
+      "password": "$2a$10$LZAfZVsRIBSSig.Z9NOnJ.Hl5xO784WcbQf1b8mMKkxriJnrnQnBO",
+      "id": 1
+    }
+  ],
+  "themes": [
+    {
+      "id": 1,
+      "primaryColor": "deepskyblue",
+      "secondaryColor": "coral"
+    }
+  ],
+  "todos": [
+    {
+      "title": "Test Todo",
+      "description": "This is a test",
+      "author": "User",
+      "id": 1
+    },
+    {
+      "title": "what ",
+      "description": "is up",
+      "author": "dmxdslainer",
+      "dateCreated": "2023-11-07T23:09:24.180Z",
+      "complete": false,
+      "id": 2
+    },
+    {
+      "email": "omarullahk@gmail.com",
+      "password": "test",
+      "id": 3
+    }
+  ]
+}

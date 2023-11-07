@@ -1,9 +1,10 @@
-import React, { useReducer, useMemo } from 'react';
+import React, { useReducer, useMemo, useEffect } from 'react';
+import { useResource } from 'react-request-hook';
 import './App.css';
 import UserBar from './UserBar';
 import CreateTodo from './CreateTodo';
 import TodoList from './TodoList';
-import { StateContext } from './contexts'; // Import StateContext
+import { StateContext } from './contexts';
 import { userReducer, userInitialState } from './context/UserContext';
 import { todoReducer, todoInitialState } from './context/TodoContext';
 
@@ -23,8 +24,21 @@ function appReducer(state, action) {
 
 function App() {
   const [state, dispatch] = useReducer(appReducer, initialState);
+  const [todosResponse, getTodos] = useResource(() => ({
+    url: '/todos',
+    method: 'get'
+  }));
 
-  // Memoize the context value to prevent unnecessary re-renders
+  useEffect(() => {
+    getTodos();
+  }, [getTodos]);
+
+  useEffect(() => {
+    if (todosResponse && todosResponse.data) {
+      dispatch({ type: 'FETCH_TODOS', payload: todosResponse.data });
+    }
+  }, [todosResponse]);
+
   const contextValue = useMemo(() => ({ state, dispatch }), [state, dispatch]);
 
   return (
