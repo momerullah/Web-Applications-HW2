@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Web-Applications-HW2/static/css/main.f693b4a0.css",
-    "main.js": "/Web-Applications-HW2/static/js/main.095aebbe.js",
-    "static/js/787.2843ca88.chunk.js": "/Web-Applications-HW2/static/js/787.2843ca88.chunk.js",
-    "index.html": "/Web-Applications-HW2/index.html",
-    "main.f693b4a0.css.map": "/Web-Applications-HW2/static/css/main.f693b4a0.css.map",
-    "main.095aebbe.js.map": "/Web-Applications-HW2/static/js/main.095aebbe.js.map",
-    "787.2843ca88.chunk.js.map": "/Web-Applications-HW2/static/js/787.2843ca88.chunk.js.map"
+    "main.css": "/Web-Applications-Lab03/static/css/main.f693b4a0.css",
+    "main.js": "/Web-Applications-Lab03/static/js/main.e199cbb4.js",
+    "static/js/787.2843ca88.chunk.js": "/Web-Applications-Lab03/static/js/787.2843ca88.chunk.js",
+    "index.html": "/Web-Applications-Lab03/index.html",
+    "main.f693b4a0.css.map": "/Web-Applications-Lab03/static/css/main.f693b4a0.css.map",
+    "main.e199cbb4.js.map": "/Web-Applications-Lab03/static/js/main.e199cbb4.js.map",
+    "787.2843ca88.chunk.js.map": "/Web-Applications-Lab03/static/js/787.2843ca88.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f693b4a0.css",
-    "static/js/main.095aebbe.js"
+    "static/js/main.e199cbb4.js"
   ]
 }
