@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/Web-Applications-Lab03/static/css/main.f693b4a0.css",
-    "main.js": "/Web-Applications-Lab03/static/js/main.e199cbb4.js",
+    "main.css": "/Web-Applications-Lab03/static/css/main.d75085f3.css",
+    "main.js": "/Web-Applications-Lab03/static/js/main.31b62016.js",
     "static/js/787.2843ca88.chunk.js": "/Web-Applications-Lab03/static/js/787.2843ca88.chunk.js",
+    "static/media/light_mode_background.jpeg": "/Web-Applications-Lab03/static/media/light_mode_background.a7c1a017af0fe345c49c.jpeg",
+    "static/media/dark_mode_background.jpg": "/Web-Applications-Lab03/static/media/dark_mode_background.4fa83ec787315b2d2e3b.jpg",
     "index.html": "/Web-Applications-Lab03/index.html",
-    "main.f693b4a0.css.map": "/Web-Applications-Lab03/static/css/main.f693b4a0.css.map",
-    "main.e199cbb4.js.map": "/Web-Applications-Lab03/static/js/main.e199cbb4.js.map",
+    "main.d75085f3.css.map": "/Web-Applications-Lab03/static/css/main.d75085f3.css.map",
+    "main.31b62016.js.map": "/Web-Applications-Lab03/static/js/main.31b62016.js.map",
     "787.2843ca88.chunk.js.map": "/Web-Applications-Lab03/static/js/787.2843ca88.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f693b4a0.css",
-    "static/js/main.e199cbb4.js"
+    "static/css/main.d75085f3.css",
+    "static/js/main.31b62016.js"
   ]
 }
