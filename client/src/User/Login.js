@@ -17,13 +17,11 @@ export default function Login() {
   // Effect hook to update state upon successful login
   useEffect(() => {
     if (user?.data) {
-      // Assuming you want to store the token and username in your app's state
       dispatch({
         type: "LOGIN",
         username: user.data.username,
         token: user.data.token
       });
-      // You might also want to store the token in localStorage
       localStorage.setItem('token', user.data.token);
     }
   }, [user, dispatch]);

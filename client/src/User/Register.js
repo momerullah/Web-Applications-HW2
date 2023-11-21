@@ -3,7 +3,6 @@ import { StateContext } from "../context";
 import { useResource } from "react-request-hook";
 import axios from 'axios';
 
-// Configure axios to use the correct base URL for the Express backend
 axios.defaults.baseURL = 'http://localhost:4000';
 
 export default function Register() {
@@ -25,7 +24,6 @@ export default function Register() {
     if (user?.data) {
       // Handle the response data as per your backend's response structure
       dispatch({ type: 'REGISTER', username: user.data.username });
-      // You might want to do something with the token as well, like storing it
     }
   }, [user, dispatch]);
 

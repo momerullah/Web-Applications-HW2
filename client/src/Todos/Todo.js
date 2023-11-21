@@ -18,8 +18,8 @@ export default function Todo({
 
 // Resource hooks for updating and deleting todos
 const [, performUpdateTodo] = useResource((todo) => ({
-  url: `/toDo/toggle/${todo.id}`, // Adjust this to match your backend route for toggling completion
-  method: 'patch', // Your backend uses PATCH for updating the complete status
+  url: `/toDo/toggle/${todo.id}`, 
+  method: 'patch',
   headers: {
     Authorization: localStorage.getItem('token')
   },
@@ -27,8 +27,8 @@ const [, performUpdateTodo] = useResource((todo) => ({
 }));
 
 const [, performDeleteTodo] = useResource((id) => ({
-  url: `/toDo/delete/${id}`, // Adjust this to match your backend route for deleting
-  method: 'delete', // DELETE is the method used for removing a resource
+  url: `/toDo/delete/${id}`, 
+  method: 'delete', 
   headers: {
     Authorization: localStorage.getItem('token')
   },

@@ -17,7 +17,7 @@ export default function TodoCreator() {
 
 // Resource hook for creating todo items
 const [todoResource, createNewTodo] = useResource((todoDetails) => ({
-  url: '/toDo', // Your Express route may be different; adjust accordingly.
+  url: '/toDo', 
   method: 'post',
   headers: {
     // Include the token in the Authorization header
