@@ -1,41 +1,39 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { StateContext } from "../context";
 import { useResource } from "react-request-hook";
 
-// Component for handling user login
 export default function Login() {
-  // State hooks for managing form inputs
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  // Accessing the global state
   const { dispatch } = useContext(StateContext);
 
-  // Resource hook for login action
-  const [user, login] = useResource((user, pwd) => ({
-    url: "/login",
-    method: "post",
-    data: { email: user, password: pwd },
+  // Updated resource hook for login action to match the backend endpoint and data structure
+  const [user, login] = useResource((username, password) => ({
+    url: '/auth/login',
+    method: 'post',
+    data: { username, password },
   }));
 
-  // Effect hook to handle user state changes
+  // Effect hook to update state upon successful login
   useEffect(() => {
-    if (user?.data?.user) {
-      dispatch({ type: "LOGIN", username: user.data.user.email });
+    if (user?.data) {
+      // Assuming you want to store the token and username in your app's state
+      dispatch({
+        type: "LOGIN",
+        username: user.data.username,
+        token: user.data.token
+      });
+      // You might also want to store the token in localStorage
+      localStorage.setItem('token', user.data.token);
     }
   }, [user, dispatch]);
 
-  // Form submission handler
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Basic email format validation
-    if (!/\S+@\S+\.\S+/.test(username)) {
-      alert("Invalid email format");
-      return;
-    }
+    // No need to validate email format here if your usernames are not in email format
     login(username, password);
   };
-
+  
   // JSX for rendering the login form
   return (
     <div className="container mt-4">

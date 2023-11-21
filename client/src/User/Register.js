@@ -1,35 +1,36 @@
 import React, { useState, useContext, useEffect } from "react";
 import { StateContext } from "../context";
 import { useResource } from "react-request-hook";
+import axios from 'axios';
 
-// Component for new user registration
+// Configure axios to use the correct base URL for the Express backend
+axios.defaults.baseURL = 'http://localhost:4000';
+
 export default function Register() {
-  // State hooks for form inputs
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
-
-  // Accessing global state
   const { dispatch } = useContext(StateContext);
 
   // Resource hook for registration
-  const [user, register] = useResource((user, pwd) => ({
-    url: "/users",
-    method: "post",
-    data: { email: user, password: pwd },
+  // Updated to match the backend API endpoint and data structure
+  const [user, register] = useResource(({ username, password, passwordRepeat }) => ({
+    url: '/auth/register',
+    method: 'post',
+    data: { username, password, passwordConfirmation: passwordRepeat }
   }));
 
   // Effect hook for successful registration
   useEffect(() => {
     if (user?.data) {
-      dispatch({ type: "REGISTER", username: user.data.email });
+      // Handle the response data as per your backend's response structure
+      dispatch({ type: 'REGISTER', username: user.data.username });
+      // You might want to do something with the token as well, like storing it
     }
   }, [user, dispatch]);
 
-  // Form submission handler
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Input validation for email format and password matching
     if (!/\S+@\S+\.\S+/.test(username)) {
       alert("Invalid email format");
       return;
@@ -38,7 +39,8 @@ export default function Register() {
       alert("Passwords do not match");
       return;
     }
-    register(username, password);
+    // Call the register function with the username, password, and passwordRepeat
+    register({ username, password, passwordRepeat });
   };
 
   // JSX for the registration form

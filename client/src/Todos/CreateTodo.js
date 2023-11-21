@@ -15,12 +15,16 @@ export default function TodoCreator() {
   // Standard ISO format date for todo creation
   const creationDate = new Date().toISOString();
 
-  // Resource hook for creating todo items
-  const [todoResource, createNewTodo] = useResource((todoDetails) => ({
-    url: '/todos',
-    method: 'post',
-    data: todoDetails,
-  }));
+// Resource hook for creating todo items
+const [todoResource, createNewTodo] = useResource((todoDetails) => ({
+  url: '/toDo', // Your Express route may be different; adjust accordingly.
+  method: 'post',
+  headers: {
+    // Include the token in the Authorization header
+    Authorization: localStorage.getItem('token')
+  },
+  data: todoDetails,
+}));
 
   // Event handler for form submission
   const handleCreateTodo = (event) => {

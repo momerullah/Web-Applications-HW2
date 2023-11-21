@@ -16,17 +16,23 @@ export default function Todo({
   const { dispatch } = useContext(StateContext);
   const [isComplete, setComplete] = useState(complete);
 
-  // Resource hooks for updating and deleting todos
-  const [, performUpdateTodo] = useResource((todo) => ({
-    url: `/todos/${todo.id}`,
-    method: "PUT",
-    data: todo,
-  }));
+// Resource hooks for updating and deleting todos
+const [, performUpdateTodo] = useResource((todo) => ({
+  url: `/toDo/toggle/${todo.id}`, // Adjust this to match your backend route for toggling completion
+  method: 'patch', // Your backend uses PATCH for updating the complete status
+  headers: {
+    Authorization: localStorage.getItem('token')
+  },
+  data: { complete: todo.complete }, // Send only the fields that are being updated
+}));
 
-  const [, performDeleteTodo] = useResource((id) => ({
-    url: `/todos/${id}`,
-    method: "DELETE",
-  }));
+const [, performDeleteTodo] = useResource((id) => ({
+  url: `/toDo/delete/${id}`, // Adjust this to match your backend route for deleting
+  method: 'delete', // DELETE is the method used for removing a resource
+  headers: {
+    Authorization: localStorage.getItem('token')
+  },
+}));
 
   // Handler for toggling the completion status of a todo
   const handleCompletionToggle = () => {
